@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Nile cruise schedules and book Royal Lotus, Royal Lily, or Royal Serenade sailings between Luxor and Aswan.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="NILE EXPLORER — Booking Page">
+    <meta property="og:description" content="Choose your Nile vessel and departure, then continue to verified booking partners with your dates pre-filled.">
+    <meta property="og:image" content="https://nile-exploration.com/assets/cruises/m-s-royal-serenade/Nile-Exploration-Cruises-Royal-Serenade-Exterior.webp">
+    <meta property="og:image:alt" content="M/S Royal Serenade luxury Nile cruise">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NILE EXPLORER — Booking Page">
+    <meta name="twitter:description" content="Choose your Nile vessel and sailing date with direct, date-filled booking links.">
+    <meta name="twitter:image" content="https://nile-exploration.com/assets/cruises/m-s-royal-serenade/Nile-Exploration-Cruises-Royal-Serenade-Exterior.webp">
+    <title>NILE EXPLORER | Booking Page</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Google Fonts: Inter & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Custom Tailwind Theme Tokens -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        nile: {
+                            900: '#0B203E',
+                            800: '#12315C',
+                            700: '#1B457E',
+                        },
+                        gold: {
+                            500: '#CFA767',
+                            600: '#B88F4D',
+                        },
+                        sand: {
+                            100: '#FAF6EE',
+                            200: '#F2E8D5',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen bg-slate-50 font-sans text-slate-800 flex flex-col antialiased selection:bg-gold-500 selection:text-white">
+
+    <!-- Hero Header -->
+    <header class="relative bg-nile-900 text-white pt-12 pb-20 sm:pt-16 sm:pb-24 px-4 shadow-xl overflow-hidden">
+        <!-- Decorative Nile Wave Background -->
+        <div class="absolute inset-0 overflow-hidden opacity-20 pointer-events-none">
+            <svg viewBox="0 0 1440 320" class="absolute bottom-0 w-full h-auto" preserveAspectRatio="none">
+                <path fill="#CFA767" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,165.3C960,149,1056,171,1152,186.7C1248,203,1344,213,1392,218.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto text-center">
+            <!-- Nautical / Nile Crest Icon -->
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/10 border border-gold-500/40 mb-5 shadow-inner">
+                <svg class="w-8 h-8 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M3 17l2.5-7h13L21 17M4 17c1.5 1 3.5 1 5 0s3.5-1 5 0 3.5 1 5 0M4 20.5c1.5 1 3.5 1 5 0s3.5-1 5 0 3.5 1 5 0M9 10V6a1 1 0 011-1h4a1 1 0 011 1v4"></path>
+                </svg>
+            </div>
+            <p class="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-gold-500 mb-2">
+                Official Sailing Schedule & Direct Reservation Portal
+            </p>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold mb-4 tracking-tight text-white">
+                NILE EXPLORER<br>Booking Page
+            </h1>
+            <p class="text-base sm:text-lg text-sand-200 max-w-2xl mx-auto font-light leading-relaxed">
+                Nile cruises operate on fixed weekly embarkation schedules. Select your vessel and sailing date on the calendar to open official booking channels with your exact dates pre-filled.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Booking Card -->
+    <main class="flex-grow max-w-4xl mx-auto w-full px-4 sm:px-6 pb-16 -mt-12 relative z-20">
+        <div class="bg-white rounded-3xl shadow-2xl p-5 sm:p-8 md:p-10 border border-slate-100">
+
+            <!-- Step 1: Select Vessel -->
+            <section class="mb-10" aria-labelledby="step-vessel">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <h2 id="step-vessel" class="text-lg sm:text-xl font-bold text-slate-900 flex items-center gap-3">
+                        <span class="bg-gold-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
+                        Select Your Cruise Vessel
+                    </h2>
+                    <span class="text-xs font-medium text-slate-400">Luxor &harr; Aswan Fleet</span>
+                </div>
+
+                <!-- 3-Vessel Cards Grid -->
+                <div id="boat-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <!-- Rendered dynamically via JS -->
+                </div>
+            </section>
+
+            <!-- Step 2: Interactive Departure Calendar -->
+            <section class="mb-10" aria-labelledby="step-calendar">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <h2 id="step-calendar" class="text-lg sm:text-xl font-bold text-slate-900 flex items-center gap-3">
+                        <span class="bg-gold-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
+                        Select Departure Date
+                    </h2>
+                    <span id="calendar-hint" class="text-xs font-semibold text-gold-600 bg-sand-100 border border-sand-200 px-3 py-1 rounded-full">
+                        Select a highlighted sailing departure
+                    </span>
+                </div>
+
+                <!-- Calendar Container -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-6">
+                    <!-- Month Navigation Bar -->
+                    <div class="flex items-center justify-between mb-5">
+                        <button type="button" id="prev-month-btn" aria-label="Previous Month" class="p-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors shadow-sm">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <h3 id="calendar-month-label" class="text-base sm:text-lg font-bold text-nile-900 tracking-wide">
+                            Month Year
+                        </h3>
+                        <button type="button" id="next-month-btn" aria-label="Next Month" class="p-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition-colors shadow-sm">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Weekday Column Headers -->
+                    <div class="grid grid-cols-7 gap-1 sm:gap-2 text-center mb-2">
+                        <div class="text-xs font-bold text-slate-400 uppercase py-1">Sun</div>
+                        <div id="hdr-mon" class="text-xs font-bold text-slate-400 uppercase py-1">Mon</div>
+                        <div class="text-xs font-bold text-slate-400 uppercase py-1">Tue</div>
+                        <div class="text-xs font-bold text-slate-400 uppercase py-1">Wed</div>
+                        <div class="text-xs font-bold text-slate-400 uppercase py-1">Thu</div>
+                        <div id="hdr-fri" class="text-xs font-bold text-slate-400 uppercase py-1">Fri</div>
+                        <div class="text-xs font-bold text-slate-400 uppercase py-1">Sat</div>
+                    </div>
+
+                    <!-- Calendar Days Grid -->
+                    <div id="calendar-days-grid" class="grid grid-cols-7 gap-1 sm:gap-2">
+                        <!-- Rendered dynamically via JS -->
+                    </div>
+
+                    <!-- Calendar Legend -->
+                    <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-5 pt-4 border-t border-slate-200/80 text-xs text-slate-600">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3.5 h-3.5 rounded-md bg-nile-900 ring-2 ring-gold-500 inline-block"></span>
+                            <span>Selected Embarkation</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-3.5 h-3.5 rounded-md bg-sand-200 border border-gold-500/50 inline-block"></span>
+                            <span>Nights Onboard</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-3.5 h-3.5 rounded-md bg-slate-100 border border-dashed border-slate-400 inline-block"></span>
+                            <span>Disembarkation</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-3.5 h-3.5 rounded-md bg-white border-2 border-gold-500 inline-block"></span>
+                            <span id="departure-legend-label">Available Departure</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 4: Voyage Summary & Direct Booking Actions -->
+            <section aria-labelledby="step-booking">
+                <h2 id="step-booking" class="text-lg sm:text-xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                    <span class="bg-gold-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
+                    Finalize Your Reservation
+                </h2>
+
+                <!-- Selected Voyage Summary Card -->
+                <div class="bg-sand-100 border border-sand-200 rounded-2xl p-5 sm:p-6 mb-6" aria-live="polite" aria-atomic="true">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 mb-4 border-b border-sand-200">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-gold-600">Selected Vessel</span>
+                            <p id="summary-boat-name" class="text-lg font-bold text-nile-900">Mövenpick MS Royal Lotus</p>
+                        </div>
+                        <span id="summary-route-badge" class="self-start sm:self-center text-xs font-semibold bg-white text-nile-900 border border-sand-200 px-3 py-1.5 rounded-full shadow-xs">
+                            4 Nights &bull; Luxor &rarr; Aswan
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center text-center sm:text-left">
+                        <div>
+                            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Check-In (Embark)</p>
+                            <p id="summary-checkin" class="text-base sm:text-lg font-bold text-nile-900">--</p>
+                        </div>
+
+                        <div class="flex flex-col items-center justify-center">
+                            <span id="summary-nights-pill" class="text-xs font-bold text-gold-600 bg-white px-3 py-1 rounded-full border border-sand-200">
+                                4 Nights
+                            </span>
+                        </div>
+
+                        <div class="sm:text-right">
+                            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Check-Out (Disembark)</p>
+                            <p id="summary-checkout" class="text-base sm:text-lg font-bold text-nile-900">--</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Partner Booking Buttons -->
+                <div id="booking-buttons-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Expedia Link -->
+                    <a id="expedia-link" href="#" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-3 bg-[#FFC52E] hover:bg-[#F2B61C] text-slate-900 font-bold py-4 px-6 rounded-2xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 text-base">
+                        <span>Book on Expedia</span>
+                        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
+
+                    <!-- Booking.com Link -->
+                    <a id="booking-link" href="#" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-3 bg-[#003B95] hover:bg-[#002B6C] text-white font-bold py-4 px-6 rounded-2xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 text-base">
+                        <span>Book on Booking.com</span>
+                        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
+
+                    <!-- Accor Link (Dynamically hidden for vessels not listed with Accor) -->
+                    <a id="accor-link" href="#" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-3 bg-nile-900 hover:bg-nile-800 text-white font-bold py-4 px-6 rounded-2xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 text-base">
+                        <span>Book on Accor</span>
+                        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <p id="booking-helper-note" class="text-center text-xs text-slate-500 mt-4">
+                    Links open directly to the selected vessel's reservation page with your exact sailing dates pre-filled.
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-100 py-6 px-4 text-center text-slate-500 text-xs sm:text-sm mt-auto border-t border-slate-200">
+        <p>NILE EXPLORER Booking Page &bull; Official Schedule Helper for Luxury Nile Cruises. Final rates and cabin selection are completed on partner websites.</p>
+    </footer>
+
+    <!-- Application Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // MODULE: Data configuration — edit vessel IDs, schedules, and images here.
+            const VesselConfig = Object.freeze({
+                lotus: {
+                    id: 'lotus',
+                    name: 'Mövenpick MS Royal Lotus',
+                    brand: 'Mövenpick',
+                    badgeStyle: 'bg-nile-900 text-gold-500',
+                    expediaId: '40067414',
+                    bookingSlug: 'movenpick-royal-lotus',
+                    accorId: 'B4M0',
+                    itineraries: [
+                        { day: 1, nights: 4, route: 'Luxor → Aswan' },
+                        { day: 5, nights: 3, route: 'Aswan → Luxor' }
+                    ],
+                    image: 'https://nile-exploration.com/assets/cruises/m-s-royal-lotus/Nile-Exploration-Cruises-Royal-Lotus-Exterior.webp'
+                },
+                lily: {
+                    id: 'lily',
+                    name: 'Mövenpick MS Royal Lily',
+                    brand: 'Mövenpick',
+                    badgeStyle: 'bg-nile-900 text-gold-500',
+                    expediaId: '40067035',
+                    bookingSlug: 'movenpick-royal-lily',
+                    accorId: 'B4M2',
+                    itineraries: [
+                        { day: 1, nights: 4, route: 'Luxor → Aswan' },
+                        { day: 5, nights: 3, route: 'Aswan → Luxor' }
+                    ],
+                    image: 'https://nile-exploration.com/assets/cruises/m-s-royal-lily/Nile-Exploration-Cruises-Royal-Lily-Exterior.webp'
+                },
+                serenade: {
+                    id: 'serenade',
+                    name: 'M/S Royal Serenade',
+                    brand: 'Exclusive Luxury',
+                    badgeStyle: 'bg-gold-500 text-nile-900',
+                    expediaId: '136230445',
+                    bookingSlug: 'royal-serenade-nile-cruise',
+                    accorId: null, // Accor button is hidden for MS Royal Serenade
+                    cycleDays: 14,
+                    cycleStart: '2026-11-22',
+                    itineraries: [
+                        { cycleOffset: 0, nights: 4, route: 'Luxor → Aswan' },
+                        { cycleOffset: 4, nights: 4, route: 'Aswan → Luxor' },
+                        { cycleOffset: 8, nights: 5, route: 'Luxor → Aswan' }
+                    ],
+                    seasonalSchedules: [
+                        {
+                            start: '2026-12-21',
+                            end: '2027-01-08',
+                            itineraries: [
+                                { day: 1, nights: 4, route: 'Luxor → Aswan' },
+                                { day: 5, nights: 3, route: 'Aswan → Luxor' }
+                            ]
+                        }
+                    ],
+                    image: 'https://nile-exploration.com/assets/cruises/m-s-royal-serenade/Nile-Exploration-Cruises-Royal-Serenade-Exterior.webp'
+                }
+            });
+
+            const boats = VesselConfig;
+
+            // MODULE: Application state — runtime selections only.
+            let currentBoatId = 'lotus';
+
+            // Minimum bookable date: Today + 2-day operational buffer
+            const minBookableDate = new Date();
+            minBookableDate.setHours(0, 0, 0, 0);
+            minBookableDate.setDate(minBookableDate.getDate() + 2);
+
+            function dateToDayNumber(date) {
+                return Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / 86400000;
+            }
+
+            // MODULE: Sailing schedule — all vessel-specific schedule rules live here.
+            const ScheduleModule = Object.freeze({
+                nextDeparture() {
+                    const candidate = new Date(minBookableDate);
+                    for (let offset = 0; offset < 366; offset++) {
+                        if (this.itineraryForDate(candidate)) {
+                            return candidate;
+                        }
+                        candidate.setDate(candidate.getDate() + 1);
+                    }
+                    throw new Error(`No departure schedule configured for ${boats[currentBoatId].name}`);
+                },
+                itineraryForDate(date) {
+                    const boat = boats[currentBoatId];
+                    const dateNumber = dateToDayNumber(date);
+                    const seasonalSchedule = boat.seasonalSchedules?.find((schedule) => {
+                        const [startYear, startMonth, startDay] = schedule.start.split('-').map(Number);
+                        const [endYear, endMonth, endDay] = schedule.end.split('-').map(Number);
+                        return dateNumber >= dateToDayNumber(new Date(startYear, startMonth - 1, startDay)) &&
+                               dateNumber <= dateToDayNumber(new Date(endYear, endMonth - 1, endDay));
+                    });
+                    if (seasonalSchedule) {
+                        return seasonalSchedule.itineraries.find(
+                            (itinerary) => itinerary.day === date.getDay()
+                        ) || null;
+                    }
+
+                    if (boat.cycleDays && boat.cycleStart) {
+                        const [year, month, day] = boat.cycleStart.split('-').map(Number);
+                        const cycleStart = new Date(year, month - 1, day);
+                        const elapsedDays = dateToDayNumber(date) - dateToDayNumber(cycleStart);
+                        const cycleDay = ((elapsedDays % boat.cycleDays) + boat.cycleDays) % boat.cycleDays;
+                        const itinerary = boat.itineraries.find(
+                            (item) => item.cycleOffset === cycleDay
+                        ) || null;
+                        if (!itinerary) return null;
+
+                        const nextSeasonStart = boat.seasonalSchedules?.find((schedule) => {
+                            const [seasonYear, seasonMonth, seasonDay] = schedule.start.split('-').map(Number);
+                            const seasonStartNumber = dateToDayNumber(new Date(seasonYear, seasonMonth - 1, seasonDay));
+                            return dateNumber < seasonStartNumber &&
+                                   dateNumber + itinerary.nights > seasonStartNumber;
+                        });
+                        return nextSeasonStart ? null : itinerary;
+                    }
+
+                    return boat.itineraries.find((itinerary) => itinerary.day === date.getDay()) || null;
+                }
+            });
+
+            let selectedDate = ScheduleModule.nextDeparture();
+            let nights = ScheduleModule.itineraryForDate(selectedDate).nights;
+            let displayedYear = selectedDate.getFullYear();
+            let displayedMonth = selectedDate.getMonth();
+
+            // MODULE: Date utilities — all partner links consume ISO local dates.
+            const DateModule = Object.freeze({
+                display(date) {
+                    return date.toLocaleDateString('en-US', {
+                        weekday: 'short',
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric'
+                    });
+                },
+                iso(date) {
+                    const year = date.getFullYear();
+                    const month = String(date.getMonth() + 1).padStart(2, '0');
+                    const day = String(date.getDate()).padStart(2, '0');
+                    return `${year}-${month}-${day}`;
+                },
+                sameDay(a, b) {
+                    return a.getFullYear() === b.getFullYear() &&
+                           a.getMonth() === b.getMonth() &&
+                           a.getDate() === b.getDate();
+                }
+            });
+
+            // MODULE: DOM references — UI element lookup is isolated here.
+            const boatGridEl = document.getElementById('boat-grid');
+            const calendarHint = document.getElementById('calendar-hint');
+            const departureLegendLabel = document.getElementById('departure-legend-label');
+            const prevMonthBtn = document.getElementById('prev-month-btn');
+            const nextMonthBtn = document.getElementById('next-month-btn');
+            const calendarMonthLabel = document.getElementById('calendar-month-label');
+            const calendarDaysGrid = document.getElementById('calendar-days-grid');
+            const hdrMon = document.getElementById('hdr-mon');
+            const hdrFri = document.getElementById('hdr-fri');
+            const summaryBoatName = document.getElementById('summary-boat-name');
+            const summaryRouteBadge = document.getElementById('summary-route-badge');
+            const summaryCheckin = document.getElementById('summary-checkin');
+            const summaryCheckout = document.getElementById('summary-checkout');
+            const summaryNightsPill = document.getElementById('summary-nights-pill');
+            const bookingButtonsContainer = document.getElementById('booking-buttons-container');
+            const expediaLink = document.getElementById('expedia-link');
+            const bookingLink = document.getElementById('booking-link');
+            const accorLink = document.getElementById('accor-link');
+            const bookingHelperNote = document.getElementById('booking-helper-note');
+
+            // MODULE: Vessel view — vessel-card rendering only.
+            function renderBoats() {
+                boatGridEl.innerHTML = '';
+
+                Object.values(boats).forEach((boat) => {
+                    const isSelected = boat.id === currentBoatId;
+                    const card = document.createElement('button');
+                    card.type = 'button';
+                    card.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+                    card.className = `text-left cursor-pointer relative rounded-2xl overflow-hidden border-2 transition-all transform hover:-translate-y-0.5 focus:outline-none ${
+                        isSelected
+                            ? 'border-nile-900 shadow-lg ring-2 ring-gold-500/50 bg-white'
+                            : 'border-slate-200 shadow-sm opacity-85 hover:opacity-100 hover:border-gold-500 bg-white'
+                    }`;
+
+                    card.innerHTML = `
+                        <div class="h-36 sm:h-32 w-full bg-nile-900 relative overflow-hidden">
+                            <!-- Subtle decorative backdrop while image loads -->
+                            <div class="absolute inset-0 flex items-center justify-center text-gold-500/40">
+                                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 17l2.5-7h13L21 17M4 17c1.5 1 3.5 1 5 0s3.5-1 5 0 3.5 1 5 0"></path>
+                                </svg>
+                            </div>
+                            <img
+                                src="${boat.image}"
+                                alt="${boat.name}"
+                                loading="lazy"
+                                decoding="async"
+                                class="w-full h-full object-cover relative z-10 transition-transform duration-500 hover:scale-105"
+                                onerror="this.style.display='none';"
+                            >
+                            <!-- Brand / Tier Badge -->
+                            <span class="absolute top-2.5 left-2.5 z-20 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm ${boat.badgeStyle}">
+                                ${boat.brand}
+                            </span>
+                            <!-- Selected Checkmark -->
+                            ${isSelected ? `
+                                <span class="absolute top-2.5 right-2.5 z-20 w-6 h-6 rounded-full bg-gold-500 text-nile-900 flex items-center justify-center shadow-md">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </span>
+                            ` : ''}
+                        </div>
+                        <div class="p-3.5">
+                            <h3 class="font-bold text-sm sm:text-base text-slate-900 leading-snug">${boat.name}</h3>
+                            <p class="text-xs text-slate-500 mt-1">
+                                ${isSelected ? 'Selected Vessel' : 'Click to select vessel'}
+                            </p>
+                        </div>
+                    `;
+
+                    card.addEventListener('click', () => {
+                        currentBoatId = boat.id;
+                        const selectedItinerary = ScheduleModule.itineraryForDate(selectedDate);
+                        if (!selectedItinerary) {
+                            selectedDate = ScheduleModule.nextDeparture();
+                            displayedYear = selectedDate.getFullYear();
+                            displayedMonth = selectedDate.getMonth();
+                        }
+                        nights = ScheduleModule.itineraryForDate(selectedDate).nights;
+                        renderBoats();
+                        renderCalendar();
+                        renderSummaryAndLinks();
+                    });
+
+                    boatGridEl.appendChild(card);
+                });
+            }
+
+            // MODULE: Calendar view — calendar rendering and date selection only.
+            function renderCalendar() {
+                const monthDate = new Date(displayedYear, displayedMonth, 1);
+                hdrMon.className = 'text-xs font-extrabold text-nile-900 uppercase py-1 bg-sand-200 rounded-md';
+                hdrFri.className = 'text-xs font-extrabold text-nile-900 uppercase py-1 bg-sand-200 rounded-md';
+                calendarHint.textContent = boats[currentBoatId].itineraries
+                    .map((itinerary) => {
+                        const dayOfWeek = itinerary.day ?? (() => {
+                            const [year, month, day] = boats[currentBoatId].cycleStart.split('-').map(Number);
+                            const departure = new Date(year, month - 1, day + itinerary.cycleOffset);
+                            return departure.getDay();
+                        })();
+                        const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayOfWeek];
+                        return `${weekday}: ${itinerary.nights}N ${itinerary.route}`;
+                    })
+                    .join(' · ') + (boats[currentBoatId].cycleDays ? ' · Standard 14-day rotation' : '') +
+                    (boats[currentBoatId].seasonalSchedules ? ' · Festive season uses Monday 4N / Friday 3N' : '');
+                departureLegendLabel.textContent = `Available Departure · ${boats[currentBoatId].itineraries
+                    .map((itinerary) => {
+                        const dayOfWeek = itinerary.day ?? (() => {
+                            const [year, month, day] = boats[currentBoatId].cycleStart.split('-').map(Number);
+                            return new Date(year, month - 1, day + itinerary.cycleOffset).getDay();
+                        })();
+                        return `${itinerary.nights}N ${['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][dayOfWeek]}`;
+                    })
+                    .join(' / ')}`;
+
+                calendarMonthLabel.textContent = monthDate.toLocaleDateString('en-US', {
+                    month: 'long',
+                    year: 'numeric'
+                });
+
+                // Disable previous month button if already viewing the current real-world month
+                const today = new Date();
+                const isCurrentOrPastMonth =
+                    displayedYear < today.getFullYear() ||
+                    (displayedYear === today.getFullYear() && displayedMonth <= today.getMonth());
+                prevMonthBtn.disabled = isCurrentOrPastMonth;
+
+                // Compute check-out date for highlighting nights onboard
+                const checkOutDate = new Date(selectedDate);
+                checkOutDate.setDate(checkOutDate.getDate() + nights);
+
+                calendarDaysGrid.innerHTML = '';
+
+                const firstWeekday = monthDate.getDay(); // 0 (Sun) - 6 (Sat)
+                const daysInMonth = new Date(displayedYear, displayedMonth + 1, 0).getDate();
+
+                // Leading empty cells
+                for (let i = 0; i < firstWeekday; i++) {
+                    const emptyCell = document.createElement('div');
+                    emptyCell.className = 'h-11 sm:h-12';
+                    calendarDaysGrid.appendChild(emptyCell);
+                }
+
+                // Month day cells
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const cellDate = new Date(displayedYear, displayedMonth, day);
+                    cellDate.setHours(0, 0, 0, 0);
+
+                    const departureItinerary = ScheduleModule.itineraryForDate(cellDate);
+                    const departureNights = departureItinerary?.nights;
+                    const isValidDeparture =
+                        departureItinerary !== null &&
+                        cellDate >= minBookableDate;
+                    const isSelectedStart = DateModule.sameDay(cellDate, selectedDate);
+                    const isCheckOut = DateModule.sameDay(cellDate, checkOutDate);
+                    const isOnboardNight =
+                        cellDate > selectedDate && cellDate < checkOutDate;
+
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.textContent = String(day);
+
+                    if (isSelectedStart) {
+                        btn.className = 'h-11 sm:h-12 rounded-xl bg-nile-900 text-white font-bold text-sm sm:text-base ring-2 ring-gold-500 shadow-md transition-all cursor-pointer';
+                        btn.innerHTML = `<span>${day}</span><span class="block text-[9px] font-semibold">${departureNights}N</span>`;
+                        btn.setAttribute('aria-label', `Selected departure: ${DateModule.display(cellDate)}, ${departureNights} nights`);
+                    } else if (isValidDeparture) {
+                        btn.className = `h-11 sm:h-12 rounded-xl bg-white hover:bg-gold-500 hover:text-nile-900 text-nile-900 font-bold text-sm sm:text-base border-2 ${cellDate.getDay() === 1 ? 'border-nile-900' : 'border-gold-500'} shadow-xs transition-all cursor-pointer`;
+                        btn.innerHTML = `<span>${day}</span><span class="block text-[9px] font-semibold">${departureNights}N</span>`;
+                        btn.setAttribute('aria-label', `Select ${departureNights}-night departure: ${DateModule.display(cellDate)}, ${departureItinerary.route}`);
+                        btn.addEventListener('click', () => {
+                            selectedDate = new Date(cellDate);
+                            nights = departureNights;
+                            renderCalendar();
+                            renderSummaryAndLinks();
+                        });
+                    } else if (isCheckOut) {
+                        btn.disabled = true;
+                        btn.className = 'h-11 sm:h-12 rounded-xl bg-slate-100 text-nile-900 font-semibold text-sm sm:text-base border border-dashed border-slate-400 cursor-default';
+                        btn.setAttribute('aria-label', `Disembarkation: ${DateModule.display(cellDate)}`);
+                    } else if (isOnboardNight) {
+                        btn.disabled = true;
+                        btn.className = 'h-11 sm:h-12 rounded-xl bg-sand-200/80 text-nile-900 font-semibold text-sm sm:text-base border border-gold-500/30 cursor-default';
+                        btn.setAttribute('aria-label', `Night onboard: ${DateModule.display(cellDate)}`);
+                    } else {
+                        btn.disabled = true;
+                        btn.className = 'h-11 sm:h-12 rounded-xl text-slate-300 text-sm sm:text-base cursor-not-allowed';
+                    }
+
+                    calendarDaysGrid.appendChild(btn);
+                }
+            }
+
+            // MODULE: Partner links — every vessel uses the same URL format per partner.
+            const PartnerLinkModule = Object.freeze({
+                expedia(boat, checkIn, checkOut) {
+                    return `https://www.expedia.com/go/hotel/info/${boat.expediaId}/${checkIn}/${checkOut}?NumRoom=1&NumAdult-Room1=1`;
+                },
+                booking(boat, checkIn, checkOut) {
+                    return `https://www.booking.com/hotel/eg/${boat.bookingSlug}.html?checkin=${checkIn}&checkout=${checkOut}&group_adults=2&group_children=0&no_rooms=1`;
+                },
+                accor(boat, checkIn, checkOut) {
+                    return `https://all.accor.com/booking/en/accor/hotel/${boat.accorId}?compositions=1&dateIn=${checkIn}&dateOut=${checkOut}`;
+                }
+            });
+
+            // MODULE: Booking summary — combines selected trip data with partner links.
+            function renderSummaryAndLinks() {
+                const boat = boats[currentBoatId];
+                const checkOutDate = new Date(selectedDate);
+                checkOutDate.setDate(checkOutDate.getDate() + nights);
+
+                const routeLabel = ScheduleModule.itineraryForDate(selectedDate).route;
+                const startStr = DateModule.iso(selectedDate);
+                const endStr = DateModule.iso(checkOutDate);
+
+                summaryBoatName.textContent = boat.name;
+                summaryRouteBadge.textContent = `${nights} Nights • ${routeLabel}`;
+                summaryCheckin.textContent = DateModule.display(selectedDate);
+                summaryCheckout.textContent = DateModule.display(checkOutDate);
+                summaryNightsPill.textContent = `${nights} Nights`;
+
+                bookingLink.href = PartnerLinkModule.booking(boat, startStr, endStr);
+                expediaLink.href = PartnerLinkModule.expedia(boat, startStr, endStr);
+                expediaLink.classList.remove('hidden');
+
+                // Build Accor direct property URL or hide if vessel is independent
+                if (boat.accorId) {
+                    accorLink.href = PartnerLinkModule.accor(boat, startStr, endStr);
+                    accorLink.classList.remove('hidden');
+                    bookingButtonsContainer.className = 'grid grid-cols-1 sm:grid-cols-3 gap-4';
+                    bookingHelperNote.textContent = `Links open directly to the verified ${boat.name} listings with your exact dates pre-filled.`;
+                } else {
+                    accorLink.classList.add('hidden');
+                    bookingButtonsContainer.className = 'grid grid-cols-1 sm:grid-cols-2 gap-4';
+                    bookingHelperNote.textContent = `Expedia and Booking.com open the verified ${boat.name} property with your exact dates pre-filled.`;
+                }
+            }
+
+            // MODULE: Calendar event handlers — month navigation only.
+            prevMonthBtn.addEventListener('click', () => {
+                if (displayedMonth === 0) {
+                    displayedMonth = 11;
+                    displayedYear -= 1;
+                } else {
+                    displayedMonth -= 1;
+                }
+                renderCalendar();
+            });
+
+            nextMonthBtn.addEventListener('click', () => {
+                if (displayedMonth === 11) {
+                    displayedMonth = 0;
+                    displayedYear += 1;
+                } else {
+                    displayedMonth += 1;
+                }
+                renderCalendar();
+            });
+
+            // MODULE: Application bootstrap — initial composition of all modules.
+            function renderAll() {
+                renderBoats();
+                renderCalendar();
+                renderSummaryAndLinks();
+            }
+
+            renderAll();
+        });
+    </script>
+</body>
+</html>
