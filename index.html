@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Explore Nile cruise schedules and book Royal Lotus, Royal Lily, or Royal Serenade sailings between Luxor and Aswan.">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="NILE EXPLORER — Booking Page">
+    <meta property="og:title" content="NILE EXPLORATION Booking Page Demo">
     <meta property="og:description" content="Choose your Nile vessel and departure, then continue to verified booking partners with your dates pre-filled.">
     <meta property="og:image" content="https://nile-exploration.com/assets/cruises/m-s-royal-serenade/Nile-Exploration-Cruises-Royal-Serenade-Exterior.webp">
     <meta property="og:image:alt" content="M/S Royal Serenade luxury Nile cruise">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="NILE EXPLORER — Booking Page">
+    <meta name="twitter:title" content="NILE EXPLORATION Booking Page Demo">
     <meta name="twitter:description" content="Choose your Nile vessel and sailing date with direct, date-filled booking links.">
     <meta name="twitter:image" content="https://nile-exploration.com/assets/cruises/m-s-royal-serenade/Nile-Exploration-Cruises-Royal-Serenade-Exterior.webp">
-    <title>NILE EXPLORER | Booking Page</title>
+    <title>NILE EXPLORATION Booking Page Demo</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load Google Fonts: Inter & Playfair Display -->
@@ -112,7 +112,7 @@
                 </div>
 
                 <!-- Calendar Container -->
-                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-6">
+                <div id="calendar-container" class="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-6 touch-pan-y">
                     <!-- Month Navigation Bar -->
                     <div class="flex items-center justify-between mb-5">
                         <button type="button" id="prev-month-btn" aria-label="Previous Month" class="p-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors shadow-sm">
@@ -257,6 +257,7 @@
                     badgeStyle: 'bg-nile-900 text-gold-500',
                     expediaId: '40067414',
                     bookingSlug: 'movenpick-royal-lotus',
+                    bookingHotelId: '8730970',
                     accorId: 'B4M0',
                     itineraries: [
                         { day: 1, nights: 4, route: 'Luxor → Aswan' },
@@ -271,6 +272,7 @@
                     badgeStyle: 'bg-nile-900 text-gold-500',
                     expediaId: '40067035',
                     bookingSlug: 'movenpick-royal-lily',
+                    bookingHotelId: '8720723',
                     accorId: 'B4M2',
                     itineraries: [
                         { day: 1, nights: 4, route: 'Luxor → Aswan' },
@@ -285,6 +287,7 @@
                     badgeStyle: 'bg-gold-500 text-nile-900',
                     expediaId: '136230445',
                     bookingSlug: 'royal-serenade-nile-cruise',
+                    bookingHotelId: '16170723',
                     accorId: null, // Accor button is hidden for MS Royal Serenade
                     cycleDays: 14,
                     cycleStart: '2026-11-22',
@@ -407,6 +410,7 @@
             const nextMonthBtn = document.getElementById('next-month-btn');
             const calendarMonthLabel = document.getElementById('calendar-month-label');
             const calendarDaysGrid = document.getElementById('calendar-days-grid');
+            const calendarContainer = document.getElementById('calendar-container');
             const hdrMon = document.getElementById('hdr-mon');
             const hdrFri = document.getElementById('hdr-fri');
             const summaryBoatName = document.getElementById('summary-boat-name');
@@ -603,6 +607,9 @@
                 booking(boat, checkIn, checkOut) {
                     return `https://www.booking.com/hotel/eg/${boat.bookingSlug}.html?checkin=${checkIn}&checkout=${checkOut}&group_adults=2&group_children=0&no_rooms=1`;
                 },
+                bookingApp(boat, checkIn, checkOut) {
+                    return `booking://hotel/${boat.bookingHotelId}?checkin=${checkIn}&checkout=${checkOut}`;
+                },
                 accor(boat, checkIn, checkOut) {
                     return `https://all.accor.com/booking/en/accor/hotel/${boat.accorId}?compositions=1&dateIn=${checkIn}&dateOut=${checkOut}`;
                 }
@@ -624,7 +631,11 @@
                 summaryCheckout.textContent = DateModule.display(checkOutDate);
                 summaryNightsPill.textContent = `${nights} Nights`;
 
-                bookingLink.href = PartnerLinkModule.booking(boat, startStr, endStr);
+                const bookingWebUrl = PartnerLinkModule.booking(boat, startStr, endStr);
+                bookingLink.dataset.webUrl = bookingWebUrl;
+                bookingLink.href = window.matchMedia('(pointer: coarse)').matches
+                    ? PartnerLinkModule.bookingApp(boat, startStr, endStr)
+                    : bookingWebUrl;
                 expediaLink.href = PartnerLinkModule.expedia(boat, startStr, endStr);
                 expediaLink.classList.remove('hidden');
 
@@ -641,8 +652,9 @@
                 }
             }
 
-            // MODULE: Calendar event handlers — month navigation only.
-            prevMonthBtn.addEventListener('click', () => {
+            // MODULE: Calendar event handlers — month navigation and touch gestures.
+            function showPreviousMonth() {
+                if (prevMonthBtn.disabled) return;
                 if (displayedMonth === 0) {
                     displayedMonth = 11;
                     displayedYear -= 1;
@@ -650,9 +662,9 @@
                     displayedMonth -= 1;
                 }
                 renderCalendar();
-            });
+            }
 
-            nextMonthBtn.addEventListener('click', () => {
+            function showNextMonth() {
                 if (displayedMonth === 11) {
                     displayedMonth = 0;
                     displayedYear += 1;
@@ -660,7 +672,56 @@
                     displayedMonth += 1;
                 }
                 renderCalendar();
+            }
+
+            prevMonthBtn.addEventListener('click', showPreviousMonth);
+            nextMonthBtn.addEventListener('click', showNextMonth);
+
+            bookingLink.addEventListener('click', (event) => {
+                if (!window.matchMedia('(pointer: coarse)').matches) return;
+
+                event.preventDefault();
+                let fallbackTimer;
+                const handleVisibilityChange = () => {
+                    if (document.hidden) {
+                        window.clearTimeout(fallbackTimer);
+                    }
+                };
+                document.addEventListener('visibilitychange', handleVisibilityChange, { once: true });
+
+                window.location.href = bookingLink.href;
+                fallbackTimer = window.setTimeout(() => {
+                    document.removeEventListener('visibilitychange', handleVisibilityChange);
+                    if (!document.hidden) {
+                        window.location.href = bookingLink.dataset.webUrl;
+                    }
+                }, 1500);
             });
+
+            let touchStartX = 0;
+            let touchStartY = 0;
+
+            calendarContainer.addEventListener('touchstart', (event) => {
+                const touch = event.changedTouches[0];
+                touchStartX = touch.clientX;
+                touchStartY = touch.clientY;
+            }, { passive: true });
+
+            calendarContainer.addEventListener('touchend', (event) => {
+                const touch = event.changedTouches[0];
+                const horizontalDistance = touch.clientX - touchStartX;
+                const verticalDistance = touch.clientY - touchStartY;
+                const isHorizontalSwipe =
+                    Math.abs(horizontalDistance) >= 50 &&
+                    Math.abs(horizontalDistance) > Math.abs(verticalDistance) * 1.25;
+
+                if (!isHorizontalSwipe) return;
+                if (horizontalDistance < 0) {
+                    showNextMonth();
+                } else {
+                    showPreviousMonth();
+                }
+            }, { passive: true });
 
             // MODULE: Application bootstrap — initial composition of all modules.
             function renderAll() {
